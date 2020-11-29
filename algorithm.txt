@@ -1,0 +1,5 @@
+Store each cell as a node with their row, column values and distance from source cell.
+Start BFS with source cell.
+Make a visited array with all having “false” values except ‘0’cells which are assigned “true” values as they can not be traversed.
+Keep updating distance from source value in each move.
+Return distance when destination is met, else return -1 (no path exists in between source and destination).
