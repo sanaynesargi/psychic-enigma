@@ -18,14 +18,14 @@ class Grid:
         self.grid = self.get_grid()
         self.walls = []
         self.stop_counting = True
-        self.start = 0
-        self.end = 399
+        self.start = 1
+        self.end = 400
 
     def get_grid(self):
 
         grid = []
         x, y = 10, 10
-        id = 0
+        id = 1
         self.squares_per_row = 25
         self.num_of_squares = 500 // self.squares_per_row
 
