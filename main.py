@@ -89,6 +89,7 @@ def main():
                     end.color = (255, 0, 255)
                     restart.color = (0, 255, 0)
                     grid.clear()
+                    grid.walls = []
                     pygame.display.update()
                     restart.disengage()
                 
