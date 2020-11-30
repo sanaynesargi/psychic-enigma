@@ -18,14 +18,14 @@ class Grid:
         self.grid = self.get_grid()
         self.walls = []
         self.stop_counting = True
-        self.start = 1
-        self.end = 400
+        self.start = 0
+        self.end = 399
 
     def get_grid(self):
 
         grid = []
         x, y = 10, 10
-        id = 1
+        id = 0
         self.squares_per_row = 25
         self.num_of_squares = 500 // self.squares_per_row
 
@@ -71,6 +71,9 @@ class Grid:
         r = list(range(9, 390, 20))
         l = list(range(10, 391, 20))
         
+        if id == 0:
+            return 0
+
         if len(str(id)) > 1 and str(id)[-1] == '0' and id % 2 == 0 and id not in l:
             
             return 0
@@ -86,14 +89,28 @@ class Grid:
         possible_ids = {"up": id - self.num_of_squares, "down": id + self.num_of_squares, "right": id + 1, "left": id - 1}
         ids = []
 
+        possible_ids["d-d-l"] = id + 19
+
         if self.check_column(id) == 0:
 
             possible_ids = {"up": id - self.num_of_squares, "down": id + self.num_of_squares, "right": id + 1}
+            
+            
+            possible_ids["d-u-l"] = id + self.num_of_squares + 1
+            possible_ids["d-u-r"] = id - self.num_of_squares + 1
 
         if self.check_column(id) == 1:
             possible_ids = {"up": id - self.num_of_squares, "down": id + self.num_of_squares, "left": id - 1}
-            
-        
+            possible_ids["d-d-l"] = id + self.num_of_squares - 1
+            possible_ids["d-d-r"] = id - self.num_of_squares - 1
+
+        if self.check_column(id) == -1:
+           
+            possible_ids["d-u-l"] = id + self.num_of_squares + 1
+            possible_ids["d-u-r"] = id - self.num_of_squares - 1
+            possible_ids["d-d-l"] = id + self.num_of_squares - 1
+            possible_ids["d-d-r"] = id - self.num_of_squares + 1
+
         for val in possible_ids.values():
             if (val <= (self.num_of_squares**2 - 1) and val > -1):
                 if val not in self.walls:
@@ -149,7 +166,7 @@ class Grid:
             if wall not in self.walls:
                 if not self.stop_counting:
                     self.walls.append(self.change_color_by_coordinates(x, y, (0, 0, 0)))
-                    
+                    pass
                 
     def preload_neighbors(self):
 
@@ -203,4 +220,6 @@ class Grid:
                 square.color = None
    
 
-    
+    def find_diagonal(self, id1, id2):
+
+        pass
