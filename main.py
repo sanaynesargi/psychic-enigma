@@ -74,6 +74,7 @@ def main():
                     restart.disable = False
                     restart.color = (255, 255, 0)
                     start.color = (255, 0, 0)
+                    
 
                 if end.check_clicked(x, y) and grid.stop_counting == False:
                     grid.stop_counting = True

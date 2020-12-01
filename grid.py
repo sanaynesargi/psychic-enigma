@@ -18,8 +18,9 @@ class Grid:
         self.grid = self.get_grid()
         self.walls = []
         self.stop_counting = True
-        self.start = 0
-        self.end = 399
+        self.start = random.randint(0, 100)
+        self.end = random.randint(388, 399)
+  
 
     def get_grid(self):
 
@@ -89,7 +90,7 @@ class Grid:
         possible_ids = {"up": id - self.num_of_squares, "down": id + self.num_of_squares, "right": id + 1, "left": id - 1}
         ids = []
 
-        possible_ids["d-d-l"] = id + 19
+        
 
         if self.check_column(id) == 0:
 
@@ -157,16 +158,19 @@ class Grid:
             ex, ey = end_string
         
             self.change_color_by_coordinates(sx, sy, (0, 0, 255))
-            self.change_color_by_coordinates(ex, ey, (255, 0, 0))   
+            self.change_color_by_coordinates(ex, ey, (255, 0, 0))
+               
 
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             x, y = pygame.mouse.get_pos()
             wall = self.get_id_by_coordinates(x, y)
+
             if wall not in self.walls:
                 if not self.stop_counting:
+                   
                     self.walls.append(self.change_color_by_coordinates(x, y, (0, 0, 0)))
-                    pass
+                    
                 
     def preload_neighbors(self):
 
