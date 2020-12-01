@@ -2,6 +2,7 @@ import pygame
 from square import Square
 from grid import Grid
 from button import Button
+import random
 import time
 
 pygame.init()
@@ -74,6 +75,9 @@ def main():
                     restart.disable = False
                     restart.color = (255, 255, 0)
                     start.color = (255, 0, 0)
+                    grid.start = random.randint(0, 100)
+                    grid.end = random.randint(388, 399)
+  
                     
 
                 if end.check_clicked(x, y) and grid.stop_counting == False:
